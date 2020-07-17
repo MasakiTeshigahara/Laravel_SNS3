@@ -27,30 +27,6 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <div class="file">
-                                    @foreach($file as $i)
-                                    @if($i!=null)
-                                    <img src="/tweet_image/{{$i->file}}">
-                                    @endif
-                                    @endforeach
-                                </div>
-
-                                <div class="form">
-
-                                    @if(count($errors)>0)
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach($errors->all() as $error)
-                                            <li>{{$error}}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                    @endif
-
-                                    <form action="{{route('store')}}" method="post" enctype="multipart/form-data">
-                                        {{ csrf_field() }}
-                                        <input type="file" name="image">
-                                        <br>
 
                                 </div>
 
