@@ -429,6 +429,7 @@ h6,
   color: #555;
   font-size: 16px;
   background: #e0edff;
+  border-radius: 15px;
 }
 
 .balloon1-right:before {
@@ -455,8 +456,8 @@ h6,
   max-width: 100%;
   color: #555;
   font-size: 16px;
-  background: #e0edff;
-  margin-top:　150px;
+  background: #E9E9E9;
+  border-radius: 15px;
 }
 
 .balloon1-left:before {
@@ -466,7 +467,7 @@ h6,
   left: -30px;
   margin-top: -15px;
   border: 15px solid transparent;
-  border-right: 15px solid #e0edff;
+  border-right: 15px solid #E9E9E9;
 }
 
 .balloon1-left p {

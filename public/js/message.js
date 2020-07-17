@@ -49,9 +49,9 @@ $('.btn').on('click', function () {
 })
 
 function sender_tag(val) {
-    return `<li class="mb-3 p-0">
-    <div class="container-lg row mr-0">
-        <span class="balloon6 my-0" style="margin-left: 200px;">
+    return `<li class="container-md">
+    <div class="row">
+        <span class="balloon6 my-0" style="margin-left: 600px;">
             <div class="faceicon float-right">
     　          <img src="../storage/profile_image/${val.user_icon}" alt="icon" class="icon rounded-circle img-fluid" style="height: 100px;">
     　          <p class="user_name">${val.user_name}</p>
@@ -59,7 +59,7 @@ function sender_tag(val) {
 
             <div class="balloon1-right float-right mt-0">
       　         <p class="content says text-warp" style="width: 20rem;">${val.message.msg}</p>
-             <p class="date text-info text-right">${val.message.created_at}</p>
+                <p class="date text-info text-right">${val.message.created_at}</p>
             </div>
         </span>
     </div>
@@ -67,8 +67,8 @@ function sender_tag(val) {
 
 }
 function rescipient_tag(val) {
-    return `<li class="mb-3 ">
-    <div class="container-lg ">
+    return `<li class="container-md">
+    <div class="row">
         <span class="balloon6 my-0 pl-3  row">
             <div class="faceicon">
             　<img src="../storage/profile_image/${val.user_icon}" alt="icon" class="icon rounded-circle img-fluid" style="height: 100px;">
@@ -76,7 +76,7 @@ function rescipient_tag(val) {
             </div>
             <div class="balloon1-left float-left mt-0">
             　  <p class="content says text-warp" style="width: 20rem;">${val.message.msg}</p>
-            　  <p class="date text-info ">${val.message.created_at}</p>
+            　  <p class="date text-info text-left">${val.message.created_at}</p>
             </div> 
             
         </span>
