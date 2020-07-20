@@ -40,9 +40,9 @@ $('.btn').on('click', function () {
                 $('.msgArea').append(content);
                 $('.form-control').val('');
             })
-            // .catch(e => {
-            //     alert(e.response);
-            // });
+            .catch(e => {
+                alert(e.response);
+            });
     }
 
     submit();

@@ -21,7 +21,7 @@ class TweetsController extends Controller
 
         return view('tweets.index', [
             'user'      => $user,
-            'timelines' => $timelines
+            'timelines' => $timelines,
         ]);
     }
 
@@ -44,15 +44,9 @@ class TweetsController extends Controller
 
         $validator = Validator::make($data, [
             'text' => ['required', 'string', 'max:140'],
-            'file' => ['required|max:10240|mimes:jpeg,gif,png',],
 
         ]);
-        $file=$request->file('file');
-     $fileName=str_random(20).'.'.$file->getClientOriginalExtension();
-     File::make($file)->save(public_path('tweet_images/'.$fileName));
-     $post=new Post;
-     $post->image=$fileName;
-     $post->save();
+        
 
      
         $validator->validate();
