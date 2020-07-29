@@ -57,7 +57,7 @@ class TweetsController extends Controller
     }
 
     //ツイート詳細画面
-    public function show(Tweet $tweet, Comment $comment, File $file)
+    public function show(Tweet $tweet, Comment $comment)
     {
         $user = auth()->user();
         $tweet = $tweet->getTweet($tweet->id);
@@ -67,7 +67,6 @@ class TweetsController extends Controller
         return view('tweets.show', [
             'user'     => $user,
             'tweet'    => $tweet,
-            'file'     => $file,
             'comments' => $comments,
         ]);
     }
