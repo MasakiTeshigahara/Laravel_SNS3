@@ -18,7 +18,7 @@ class Tweet extends Model
 
      //テキストを更新でる処理
     protected $fillable = [
-        'text.file'
+        'text'
 
     ];
 
