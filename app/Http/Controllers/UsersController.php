@@ -74,24 +74,18 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $user )
     {
         $data = $request->all();
         $validator = Validator::make($data, [
             'screen_name'   => ['required', 'string', 'max:50', Rule::unique('users')->ignore($user->id)],
             'name'          => ['required', 'string', 'max:255'],
             'profile_text'  => ['required', 'string', 'max:100'],
-            'profile_image' => ['file', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
+            'profile_image' => ['file', 'image = base64_encode(file_get_contents($request->image))', 'mimes:jpeg,png,jpg', 'max:2048'],
             'email'         => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)]
         ]);
         $validator->validate();
         $user->updateProfile($data);
-        //POSTされた画像ファイルデータ取得しbase64でエンコードする
-$image = base64_encode(file_get_contents($request->image->getRealPath()));
-// base64エンコードしたバイナリデータを格納
-User::insert([
- "image" => $image
-]);
         return redirect('users/' . $user->id);
     }
 
