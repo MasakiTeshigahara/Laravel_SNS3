@@ -6,7 +6,7 @@
         <div class="col-md-8 mb-3">
             <div class="card">
                 <div class="card-haeder p-3 w-100 d-flex">
-                    <img src="data:image/png;base64,<?= $image ?>" class="rounded-circle" width="50" height="50">
+                    <img src="data:image/png;base64,<?= $image->image ?>" class="rounded-circle" width="50" height="50">
                     <div class="ml-2 d-flex flex-column">
                         <p class="mb-0">{{ $tweet->user->name }}</p>
                         <a href="{{ url('users/' .$tweet->user->id) }}" class="text-secondary">{{ $tweet->user->screen_name }}</a>
