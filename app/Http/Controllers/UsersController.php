@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -85,7 +86,12 @@ class UsersController extends Controller
         ]);
         $validator->validate();
         $user->updateProfile($data);
-
+        //POSTされた画像ファイルデータ取得しbase64でエンコードする
+$image = base64_encode(file_get_contents($request->image->getRealPath()));
+// base64エンコードしたバイナリデータを格納
+User::insert([
+ "image" => $image
+]);
         return redirect('users/' . $user->id);
     }
 
