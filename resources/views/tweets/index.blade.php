@@ -8,11 +8,12 @@
         </div>
         @if (isset($timelines))
         @foreach ($timelines as $timeline)
-        @foreach($images as $image)
         <div class="col-md-8 mb-3">
             <div class="card">
                 <div class="card-haeder p-3 w-100 d-flex">
+                @foreach($images as $image)
                     <img src="data:image/png;base64,<?= $image->image ?> "class="rounded-circle" width="50" height="50">
+                    @endforeach
                     <div class="ml-2 d-flex flex-column">
                         <p class="mb-0">{{ $timeline->user->name }}</p>
                         <a href="{{ url('users/' .$timeline->user->id) }}" class="text-secondary">{{ $timeline->user->screen_name }}</a>
