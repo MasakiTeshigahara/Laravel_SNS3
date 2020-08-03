@@ -156,7 +156,7 @@ class UsersController extends Controller
 
 
 
-    public function show(User $user, Tweet $tweet, Follower $follower)
+    public function show(User $user, Tweet $tweet, Follower $follower, Image $image)
     {
         $login_user = auth()->user();
         $is_following = $login_user->isFollowing($user->id);
@@ -181,7 +181,8 @@ class UsersController extends Controller
             'tweet_count'    => $tweet_count,
             'follow_count'   => $follow_count,
             'follower_count' => $follower_count,
-            'board'  => $board
+            'board'  => $board,
+            'image'  => $image
         ]);
     }
 
