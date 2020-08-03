@@ -71,9 +71,10 @@ class RegisterController extends Controller
             'screen_name' => $data['screen_name'],
             'name' => $data['name'],
             'profile_text' => $data['profile_text'],
-            'profile_image' => 'https://picsum.photos/200/300',
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'image' => 'https://picsum.photos/200/300',
+
         ]);
     }
 }
