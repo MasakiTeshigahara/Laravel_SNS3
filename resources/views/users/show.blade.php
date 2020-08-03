@@ -7,7 +7,9 @@
             <div class="card">
                 <div class="d-inline-flex">
                     <div class="p-3 d-flex flex-column">
+                    @foreach($images as $image)
                         <img src="data:image/png;base64,<?= $image->image ?> class="rounded-circle" width="100" height="100">
+                        @endforeach
                         <div class="mt-3 d-flex flex-column">
                             <h4 class="mb-0 font-weight-bold">{{ $user->name }}</h4>
                             <span class="text-secondary">{{ $user->screen_name }}</span>
