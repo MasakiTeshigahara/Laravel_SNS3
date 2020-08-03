@@ -25,12 +25,14 @@ class UsersController extends Controller
 
     //ユーザを取得するgetAllUsers()というメソッドにログインしているユーザIDを引数で渡しています。
     //Modelから返ってきた結果をViewに返します。
-    public function index(User $user)
+    public function index(User $user, Image $image)
     {
         $all_users = $user->getAllUsers(auth()->user()->id);
+        $image = Image::all();
 
         return view('users.index', [
             'all_users'  => $all_users
+            'image' => $image
         ]);
     }
 
