@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Tweet;
 use App\Models\Comment;
 use App\Models\Follower;
+use App\Models\Image;
 
 class TweetsController extends Controller
 {
@@ -57,17 +58,20 @@ class TweetsController extends Controller
     }
 
     //ツイート詳細画面
-    public function show(Tweet $tweet, Comment $comment)
+    public function show(Tweet $tweet, Comment $comment, Image $image)
     {
         $user = auth()->user();
         $tweet = $tweet->getTweet($tweet->id);
         $comments = $comment->getComments($tweet->id);
+        $images = $image->getComments($tweet->id);
+
 
 
         return view('tweets.show', [
             'user'     => $user,
             'tweet'    => $tweet,
             'comments' => $comments,
+            'images'   => $images,
         ]);
     }
 
