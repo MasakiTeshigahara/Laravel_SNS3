@@ -31,7 +31,7 @@ class UsersController extends Controller
         $image = Image::all();
 
         return view('users.index', [
-            'all_users'  => $all_users
+            'all_users'  => $all_users,
             'image' => $image
         ]);
     }
