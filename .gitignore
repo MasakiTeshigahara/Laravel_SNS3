@@ -6,8 +6,9 @@
 .env
 .env.backup
 .phpunit.result.cache
-/.env.heroku
+bin/.env.heroku
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+*.heroku
