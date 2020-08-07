@@ -16,9 +16,7 @@
                             <label for="profile_image" class="col-md-4 col-form-label text-md-right">{{ __('サムネイル') }}</label>
 
                             <div class="col-md-6 d-flex align-items-center">
-                            @foreach($images as $image)
-                                <img src="data:image/png;base64,<?= $image->image ?>" class="mr-2 rounded-circle" width="80" height="80" alt="profile_image">
-                                @endforeach
+                                <img src="data:user/png;base64,{{ $user->profile_image }}" class="mr-2 rounded-circle" width="80" height="80" alt="profile_image">
                                 <input type="file" name="profile_image" class="@error('profile_image') is-invalid @enderror" autocomplete="profile_image">
 
                                 @error('profile_image')
@@ -47,7 +45,8 @@
                             <label for="screen_name" class="col-md-4 col-form-label text-md-right">{{ __('アカウント') }}</label>
 
                             <div class="col-md-6">
-                                <input id="screen_name" type="text" class="form-control @error('screen_name') is-invalid @enderror" name="screen_name" value="{{ $user->screen_name }}" required autocomplete="screen_name" autofocus>
+                                <input id="screen_name" type="text" class="form-control @error('screen_name') is-invalid @enderror" 
+                                name="screen_name" value="{{ $user->screen_name }}" required autocomplete="screen_name" autofocus>
 
                                 @error('screen_name')
                                 <span class="invalid-feedback" role="alert">
@@ -61,7 +60,8 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('名前') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" 
+                                name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -80,9 +80,7 @@
 
                                 <textarea id="profile_text" type="text" class="form-control @error('profile_text') is-invalid @enderror" name="profile_text" 
                                 value="{{ $user->profile_text }}" required autocomplete="profile_text" rows="5" autofocus>
-                                {{
-                                    old('$profile_text')
-                                }} </textarea>
+                                 </textarea>
 
                                 @error('profile_text')
                                 <span class="invalid-feedback badge badge-primary text-wrap" style="width: 6rem;" role="alert">

@@ -25,14 +25,14 @@ class UsersController extends Controller
 
     //ユーザを取得するgetAllUsers()というメソッドにログインしているユーザIDを引数で渡しています。
     //Modelから返ってきた結果をViewに返します。
-    public function index(User $user, Image $image)
+    public function index(User $user)
     {
         $all_users = $user->getAllUsers(auth()->user()->id);
-        $image = Image::all();
+        $images = Image::all();
 
         return view('users.index', [
             'all_users'  => $all_users,
-            'image' => $image
+            'images' => $images
         ]);
     }
 
@@ -66,9 +66,17 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(User $user, Request $request)
     {
-        return view('users.edit', ['user' => $user]);
+        // $profile_image= base64_encode(file_get_contents($request->profile_image->getRealPath()));       
+        // User::insert([
+        //     "profile_image" => $profile_image,
+        //    ]);
+        $images = Image::all();
+        return view('users.edit', [
+            'user' => $user,
+            'images' => $images,
+            ]);
     }
 
     /**
@@ -78,20 +86,24 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user, Image $image )
+    public function update(Request $request, User $user)
     {
         $data = $request->all();
         $validator = Validator::make($data, [
             'screen_name'   => ['required', 'string', 'max:50', Rule::unique('users')->ignore($user->id)],
             'name'          => ['required', 'string', 'max:255'],
             'profile_text'  => ['required', 'string', 'max:100'],
-            'image' =>         ['image', 'string', 'max:2048'],
-            'email'         => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)]
+            // 'profile_image' => ['required', 'longText'],
+            'email'         => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
         ]);
         $validator->validate();
         $user->updateProfile($data);
-        $image->image = base64_encode(file_get_contents($request->image->getRealPath()));
-        return redirect('users/' . $user->id);
+        $images = Image::all();
+
+        return redirect(
+            'users/' . $user->id,
+            // ['images' => $images]
+        );
     }
 
     /**
@@ -106,9 +118,11 @@ class UsersController extends Controller
     }
 
     // フォロー
-    public function follow(User $user)
+    public function follow(User $user, Image $image)
     {
         $follower = auth()->user();
+        $images = Image::all();
+
         // フォローしているか
         $is_following = $follower->isFollowing($user->id);
         if (!$is_following) {
@@ -158,7 +172,7 @@ class UsersController extends Controller
 
 
 
-    public function show(User $user, Tweet $tweet, Follower $follower, Image $image)
+    public function show(User $user, Tweet $tweet, Follower $follower)
     {
         $login_user = auth()->user();
         $is_following = $login_user->isFollowing($user->id);
@@ -167,6 +181,8 @@ class UsersController extends Controller
         $tweet_count = $tweet->getTweetCount($user->id);
         $follow_count = $follower->getFollowCount($user->id);
         $follower_count = $follower->getFollowerCount($user->id);
+        $images = Image::all();
+
 
 
         $board = '';
@@ -184,7 +200,7 @@ class UsersController extends Controller
             'follow_count'   => $follow_count,
             'follower_count' => $follower_count,
             'board'  => $board,
-            'image'  => $image
+            'images'  => $images,
         ]);
     }
 
@@ -204,6 +220,8 @@ class UsersController extends Controller
     {
         $user = auth()->user();
         $user_ids_arr = [];
+        $images = Image::all();
+
         // followersテーブルからフォローしているユーザーIDデータを取得する
         $ids = $follower->followingIds($user->id);
         foreach ($ids as $id) {
@@ -218,7 +236,8 @@ class UsersController extends Controller
             $all_users = $user->getUsers($user_ids_arr);
             //users/index.bladeで表示処理
             return view('users.index', [
-                'all_users'  => $all_users
+                'all_users'  => $all_users,
+                'images' => $images
             ]);
         }
     }
@@ -233,6 +252,8 @@ class UsersController extends Controller
             // 取得したユーザーIDデータからIDのみ抜き出し、配列に格納する
             array_push($user_ids_arr, $id->following_id);
         }
+        $images = Image::all();
+
         //$user_ids_arrが空欄かどうか判定する
         if (empty($user_ids_arr)) {
             echo '<center>フォローされているアカウントはいません</center>';
@@ -241,7 +262,8 @@ class UsersController extends Controller
             $all_users = $user->getUsers($user_ids_arr);
             //users/index.bladeで表示処理
             return view('users.index', [
-                'all_users'  => $all_users
+                'all_users'  => $all_users,
+                'images'  => $images
             ]);
         }
     }

@@ -7,9 +7,7 @@
                 @foreach ($all_users as $user)
                     <div class="card">
                         <div class="card-haeder p-3 w-100 d-flex">
-                        @foreach($images as $image)
-                            <img src="data:image/png;base64,<?= $image->image ?>" 
-                        @endforeach
+                            <img src="data:user/png;base64,{{ $user->profile_image }}"
                             class="rounded-circle" width="50" height="50">
                             <div class="ml-2 d-flex flex-column">
                                 <p class="mb-0">{{ $user->name }}</p>

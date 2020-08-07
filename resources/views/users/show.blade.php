@@ -6,17 +6,15 @@
         <div class="col-md-8 mb-3">
             <div class="card">
                 <div class="d-inline-flex">
-                    <div class="p-3 d-flex flex-column">
-                    @foreach($images as $image)
-                        <img src="data:image/png;base64,<?= $image->image ?> class="rounded-circle" width="100" height="100">
-                        @endforeach
+                    <div class="p-3 d-flex flex-column">                   
+                        <img src="data:user/png;base64,{{ $user->profile_image }}"class="rounded-circle" width="100" height="100">
                         <div class="mt-3 d-flex flex-column">
                             <h4 class="mb-0 font-weight-bold">{{ $user->name }}</h4>
                             <span class="text-secondary">{{ $user->screen_name }}</span>
                             @if ($user->id === Auth::user()->id)
-                                <a href="{{ url('mypage') }}"><img src="/storage/icon/DM_icon.jpeg" ,alt="DMアイコン" ,width="20" height="20"></a>
+                                <a href="{{ url('mypage') }}"><img src="data:image/png;base64,{{ $images[3]->image }}" ,alt="DMアイコン" ,width="20" height="20"></a>
                             @else
-                                    <a href="{{ url('messages',$board->id) }}"><img src="/storage/icon/DM_icon.jpeg" ,alt="DMアイコン" ,width="20" height="20"></a>
+                                    <a href="{{ url('messages',$board->id) }}"><img src="data:image/png;base64,{{ $images[3]->image }}" ,alt="DMアイコン" ,width="20" height="20"></a>
                             @endif
 
                         </div>
@@ -25,7 +23,7 @@
                         <div class="d-flex text-right">
                             <div>
                                 @if ($user->id === Auth::user()->id)
-                                <a href="{{ url('users/' .$user->id .'/edit') }}"><img src="/storage/icon/configuration_icon.png" ,alt="ツイート一覧" ,width="15" height="15"></a>
+                                <a href="{{ url('users/' .$user->id .'/edit') }}"><img src="data:image/png;base64,{{ $images[1]->image }}" ,alt="ツイート一覧" ,width="15" height="15"></a>
                                 @else
                                 @if ($is_following)
                                 <form action="{{ route('unfollow', $user->id) }}" method="POST" class="mb-2">
@@ -90,7 +88,7 @@
         <div class="col-md-8 mb-3">
             <div class="card">
                 <div class="card-haeder p-3 w-100 d-flex">
-                    <img src="{{ asset('storage/profile_image/' .$user->profile_image) }}" class="rounded-circle" width="50" height="50">
+                    <img src="data:user/png;base64,{{ $user->profile_image }}" class="rounded-circle" width="50" height="50">
                     <div class="ml-2 d-flex flex-column flex-grow-1">
                         <p class="mb-0">{{ $timeline->user->name }}</p>
                         <a href="{{ url('users/' .$timeline->user->id) }}" class="text-secondary">{{ $timeline->user->screen_name }}</a>

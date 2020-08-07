@@ -53,7 +53,7 @@ function sender_tag(val) {
     <div class="row">
         <span class="balloon6 my-0" style="margin-left: 600px;">
             <div class="faceicon float-right">
-    　          <img src="../storage/profile_image/${val.user_icon}" alt="icon" class="icon rounded-circle img-fluid" style="height: 100px;">
+    　          <img src="data:user/png;base64,{{ $user->profile_image }}" alt="icon" class="icon rounded-circle img-fluid" style="height: 100px;">
     　          <p class="user_name">${val.user_name}</p>
             </div>
 
@@ -71,7 +71,7 @@ function rescipient_tag(val) {
     <div class="row">
         <span class="balloon6 my-0 pl-3  row">
             <div class="faceicon">
-            　<img src="../storage/profile_image/${val.user_icon}" alt="icon" class="icon rounded-circle img-fluid" style="height: 100px;">
+            　<img src="data:user/png;base64,{{ $user->profile_image }}" alt="icon" class="icon rounded-circle img-fluid" style="height: 100px;">
             　<p class="user_name">${val.user_name}</p>
             </div>
             <div class="balloon1-left float-left mt-0">

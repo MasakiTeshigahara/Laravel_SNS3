@@ -20,14 +20,14 @@
             <input type="hidden" name="sender_icon" value="{{ $board->senderUser->profile_image }}" class="sender_icon">
             <input type="hidden" name="recipient_id" value="{{ $board->recipientUser->id }}" class="recipient_id">
             <input type="hidden" name="recipient_name" value="{{ $board->recipientUser->name }}" class="recipient_name">
-            <input type="hidden" name="recipient_icon" value="{{ $board->recipientUser->profile_image }}" class="recipient_icon">
+            <input type="hidden" name="recipient_icon" value="data:user/png;base64,{{ $board->recipientUser->profile_image }}" class="recipient_icon">
             <input type="hidden" name="messages" value="{{ $messages }}" class="messages">
             <input type="hidden" name="user_id" value="{{ Auth::id() }}" class="user_id">
             <div class="form-group">
                 <input type="submit" value="送信" class="btn btn-primary btn-round btn-block btn-lg submit_btn">
         </div>
 
-            
+        <!-- "data:user/png;base64,{{ $board->recipientUser->profile_image }}" -->
 
 
 

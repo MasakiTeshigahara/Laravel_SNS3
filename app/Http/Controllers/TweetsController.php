@@ -19,10 +19,13 @@ class TweetsController extends Controller
         $following_ids = $follow_ids->pluck('followed_id')->toArray();
 
         $timelines = $tweet->getTimelines($user->id, $following_ids);
+        $images = Image::all();
 
         return view('tweets.index', [
             'user'      => $user,
             'timelines' => $timelines,
+            'images'    => $images,
+            
         ]);
     }
 
@@ -30,9 +33,11 @@ class TweetsController extends Controller
     public function create()
     {
         $user = auth()->user();
+        $images = Image::all();
 
         return view('tweets.create', [
-            'user' => $user
+            'user' => $user,
+            'images' => $images,
         ]);
     }
 
@@ -63,15 +68,14 @@ class TweetsController extends Controller
         $user = auth()->user();
         $tweet = $tweet->getTweet($tweet->id);
         $comments = $comment->getComments($tweet->id);
-        $images = $image->getComments($tweet->id);
-
+        $images = Image::all();
 
 
         return view('tweets.show', [
             'user'     => $user,
             'tweet'    => $tweet,
             'comments' => $comments,
-            'images'   => $images,
+            'images'    => $images,
         ]);
     }
 
@@ -80,6 +84,8 @@ class TweetsController extends Controller
     {
         $user = auth()->user();
         $tweets = $tweet->getEditTweet($user->id, $tweet->id);
+        $images = Image::all();
+
 
         if (!isset($tweets)) {
             return redirect('tweets');
@@ -87,7 +93,8 @@ class TweetsController extends Controller
 
         return view('tweets.edit', [
             'user'   => $user,
-            'tweets' => $tweets
+            'tweets' => $tweets,
+            'images'    => $images,
         ]);
     }
 

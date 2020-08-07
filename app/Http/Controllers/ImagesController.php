@@ -12,4 +12,11 @@ class ImagesController extends Controller
         $images = Image::all();
         return view('index', ['images'=>$images]);
     }
+    public function store(Request $request)
+    {
+        $image = new Image();
+        $image->image = base64_encode(file_get_contents($request->image));
+        $image->save();
+        return redirect('/');
+    }
 }
