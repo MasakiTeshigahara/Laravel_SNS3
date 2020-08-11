@@ -74,7 +74,7 @@ class RegisterController extends Controller
             'screen_name' => $data['screen_name'],
             'name' => $data['name'],
             'profile_text' => $data['profile_text'],
-            'profile_image' => $images[4]->image,
+            'profile_image' => $images[3]->image,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
 
