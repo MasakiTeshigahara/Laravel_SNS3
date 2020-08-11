@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\Image;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
 
 class RegisterController extends Controller
 {
@@ -66,11 +68,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $images = Image::all();
         return User::create([
             // 追加
             'screen_name' => $data['screen_name'],
             'name' => $data['name'],
             'profile_text' => $data['profile_text'],
+            'profile_image' => $images[4]->image,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
 
