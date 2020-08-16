@@ -69,7 +69,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel_SNS
+                <img src="data:image/png;base64,{{ $images[7]->image }}" alt="ツイート一覧" ,
+                class="center-block" ,width="200" height="50" style="margin-right: 220px;"></a>
                 </div>
 
                 <div class="links">
