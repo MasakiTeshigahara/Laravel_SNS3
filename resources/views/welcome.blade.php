@@ -20,6 +20,10 @@
                 margin: 0;
             }
 
+            .jumbotron { 
+                background:"$images[6]->image"; background-size: cover;
+                }
+
             .full-height {
                 height: 100vh;
             }
