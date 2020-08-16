@@ -12,7 +12,8 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background: "$images[6]->image";
+                background-size: cover;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -20,10 +21,7 @@
                 margin: 0;
             }
 
-            .jumbotron { 
-                background:"$images[6]->image"; background-size: cover;
-                }
-
+        
             .full-height {
                 height: 100vh;
             }
