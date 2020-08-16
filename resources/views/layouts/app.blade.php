@@ -62,7 +62,7 @@
                         </li>
                         @endif
                         @else
-                        <a href="{{ url('/home') }}"><img src="data:image/png;base64,{{ $images[0]->image }}" alt="ツイート一覧" ,class="center-block" ,
+                        <a href="{{ url('/home') }}"><img src="data:image/png;base64,{{ $images[5]->image }}" alt="ツイート一覧" ,class="center-block" ,
                         width="200" height="50" style="margin-right: 220px;"></a>
 
                         <li class="nav-item mr-5">
