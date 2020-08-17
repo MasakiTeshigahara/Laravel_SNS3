@@ -12,7 +12,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background: "$images[6]->image";
+                background-image: "$images[6]->image";
                 background-size: cover;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
@@ -71,7 +71,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel_SNS２
+                    Laravel_SNSⅡ
                 </div>
 
                 <div class="links">
