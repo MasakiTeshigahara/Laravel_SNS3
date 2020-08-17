@@ -12,13 +12,16 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-image: image-url("$images[6]->image");
-                background-size: cover;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+            }
+
+            .contact{
+            background-image: image-url("$images[6]->image");
+            background-size: cover;
             }
 
         
