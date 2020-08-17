@@ -71,7 +71,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel_SNS
+                    Laravel_SNS２
                 </div>
 
                 <div class="links">
