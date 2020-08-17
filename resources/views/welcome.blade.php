@@ -12,6 +12,7 @@
         <!-- Styles -->
         <style>
             html, body {
+                background-color: #67C7D4;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -19,10 +20,7 @@
                 margin: 0;
             }
 
-            .contact{
-            background-image: image-url("$images[6]->image");
-            background-size: cover;
-            }
+            
 
         
             .full-height {
@@ -74,7 +72,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel_SNSⅡ
+                    Laravel_SNS
                 </div>
 
                 <div class="links">
