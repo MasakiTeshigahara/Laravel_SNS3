@@ -12,7 +12,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-image: url($images[6]->image);
+                background-image: image-url("$images[6]->image");
                 background-size: cover;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
