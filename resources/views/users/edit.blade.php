@@ -78,9 +78,9 @@
 
                             <div class="col-md-6">
 
-                                <textarea id="profile_text" type="text" class="form-control @error('profile_text') is-invalid @enderror" name="profile_text" 
+                                <input id="profile_text" type="text" class="form-control @error('profile_text') is-invalid @enderror" name="profile_text" 
                                 value="{{ $user->profile_text }}" required autocomplete="profile_text" rows="5" autofocus>
-                                 </textarea>
+                                
 
                                 @error('profile_text')
                                 <span class="invalid-feedback badge badge-primary text-wrap" style="width: 6rem;" role="alert">
