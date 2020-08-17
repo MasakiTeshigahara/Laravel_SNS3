@@ -69,7 +69,7 @@
                             <a href="{{ url('tweets/create') }}" class="btn btn-md btn-primary">ツイートする</a>
                         </li>
                         <li class="nav-item">
-                            <img src="data:user/png;base64,{{ $user->profile_image }}" class="rounded-circle" width="50" height="50">
+                            <img src="data:user/png;base64,{{ $auth->user->profile_image }}" class="rounded-circle" width="50" height="50">
                         </li>
 
                         <div class="dropdown">
