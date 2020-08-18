@@ -27,7 +27,6 @@
                 <input type="submit" value="送信" class="btn btn-primary btn-round btn-block btn-lg submit_btn">
         </div>
 
-        <!-- "data:user/png;base64,{{ $board->recipientUser->profile_image }}" -->
 
 
 
