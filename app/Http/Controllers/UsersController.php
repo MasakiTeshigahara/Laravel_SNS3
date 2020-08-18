@@ -216,12 +216,14 @@ class UsersController extends Controller
             return redirect("/");
     }
 
-    public function following(Follower $follower)
+    public function following(Follower $follower, Tweet $tweet)
     {
         $user = auth()->user();
         $user_ids_arr = [];
         $images = Image::all();
+        $all_users = $user->getAllUsers(auth()->user()->id);
 
+        
         // followersテーブルからフォローしているユーザーIDデータを取得する
         $ids = $follower->followingIds($user->id);
         foreach ($ids as $id) {
@@ -230,8 +232,15 @@ class UsersController extends Controller
         }
         //$user_ids_arrが空欄かどうか判定する
         if (empty($user_ids_arr)) {
-            echo '<center>フォローしているアカウントはいません</center>';
-        } else {
+        $alert = "<script type='text/javascript'>alert('フォローしているユーザーはいません、フォローしてみよう！');</script>";
+        echo $alert; 
+
+        return view('users.index', [
+            'all_users'  => $all_users,
+            'images' => $images
+        ]);
+            }
+            else {
             // フォローユーザーid配列を引数に、ユーザー情報を取得する
             $all_users = $user->getUsers($user_ids_arr);
             //users/index.bladeで表示処理
@@ -242,10 +251,14 @@ class UsersController extends Controller
         }
     }
 
-    public function followed(Follower $follower)
+    public function followed(Follower $follower,Tweet $tweet)
     {
         $user = auth()->user();
         $user_ids_arr = [];
+        $follow_ids = $follower->followingIds($user->id);
+        $following_ids = $follow_ids->pluck('followed_id')->toArray();
+        $timelines = $tweet->getTimelines($user->id, $following_ids);
+
         // followersテーブルからフォローされているユーザーIDデータを取得する
         $ids = $follower->followedIds($user->id);
         foreach ($ids as $id) {
@@ -256,8 +269,14 @@ class UsersController extends Controller
 
         //$user_ids_arrが空欄かどうか判定する
         if (empty($user_ids_arr)) {
-            echo '<center>フォローされているアカウントはいません</center>';
-        } else {
+            $alert = "<script type='text/javascript'>alert('フォローされているユーザーはいません');</script>";
+            echo $alert; 
+    
+            return view('tweets.index', [
+                'user'      => $user,
+                'timelines' => $timelines,
+                'images'    => $images,
+            ]);        } else {
             // フォロワーーユーザーid配列を引数に、ユーザー情報を取得する
             $all_users = $user->getUsers($user_ids_arr);
             //users/index.bladeで表示処理
